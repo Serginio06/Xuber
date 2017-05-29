@@ -1,14 +1,97 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="gold">
     <ion-title>
-      Ionic Blank
+      <span [hidden]="isPickupRequested">X uber</span>
+      <span [hidden]="!isPickupRequested">On the way...</span>
     </ion-title>
+    <ion-buttons right>
+      <button [hidden]="!isPickupRequested" ion-button icon-left (click)="cancelPickup()">
+        <ion-icon name="arrow-back"></ion-icon>
+        Cancel
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button (click)="map.centerLocation()" icon-left="">
+        <ion-icon name="navigate"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <!--<div class="TimeToPickup">-->
+  <!--<ion-chip>-->
+  <!--<ion-icon name="clock"></ion-icon>-->
+  <!--<ion-label>{{pickUpTime}}</ion-label>-->
+  <!--</ion-chip>-->
+  <!--</div>-->
+  <div class="map-wrapper">
+    <map #map [isPickupRequested]="isPickupRequested"></map>
+
+    <!--</div>-->
+
+
+    <div class="bottom request-controls">
+      <ion-row>
+        <ion-col width-50>
+          <button ion-button block color="light" icon-left>
+            <ion-icon name="card"></ion-icon>
+            {{cardNumber}}
+          </button>
+
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color="light" icon-left>
+            <ion-icon name="cash"></ion-icon>
+            Cash
+          </button>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button [hidden]="isPickupRequested" ion-button round color="primary" (click)="confirmPickup()">
+            {{btnDriverRequest}}
+          </button>
+          <button [hidden]="!isPickupRequested" ion-button round color="orange" (click)="cancelPickup()">
+            {{btnCancelRequest}}
+          </button>
+
+        </ion-col>
+        <!--<ion-col width-50>-->
+        <!--&lt;!&ndash;<button ion-button round outline color="primary">{{pickUpTime}}</button>&ndash;&gt;-->
+
+        <!--<ion-chip>-->
+        <!--<ion-icon name="pin"></ion-icon>-->
+        <!--<ion-label>{{pickUpTime}}</ion-label>-->
+        <!--</ion-chip>-->
+
+        <!--</ion-col>-->
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          PICKUP TIME IS APPROXIMATELY {{timeTillArrival}} MIN
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>
+
 </ion-content>
+<!--<ion-footer>-->
+<!--<ion-toolbar>-->
+<!--<ion-title>-->
+<!--&lt;!&ndash;<ion-col width-50>&ndash;&gt;-->
+<!--&lt;!&ndash;<button ion-button round outline color="primary">{{pickUpTime}}</button>&ndash;&gt;-->
+
+<!--<ion-chip>-->
+<!--<ion-icon name="clock"></ion-icon>-->
+<!--<ion-label>{{pickUpTime}}</ion-label>-->
+<!--</ion-chip>-->
+
+<!--&lt;!&ndash;</ion-col>&ndash;&gt;-->
+<!--</ion-title>-->
+<!--</ion-toolbar>-->
+<!--</ion-footer>-->

@@ -1,0 +1,27 @@
+pickup {
+pointer-events: none;
+
+  // url path for ionic serve '../../assets/img/pointer31.png'
+  #locator {
+    background-image: url('./../assets/img/pointer31.png');
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 25px;
+    height:25px;
+    margin-left: -12px;
+    margin-top: -12px;// center of the image is location on map
+    //margin-top: -64px;// bottom of the image is location on map
+  }
+  #locatorPic {
+    background-image: url('./../assets/img/pointer32.png');
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 52px;
+    height:57px;
+    margin-left: -26px;
+    margin-top: -69px;
+
+  }
+}
